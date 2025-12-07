@@ -120,6 +120,74 @@
 
 - Skills Gained: Serverless, Platform as a Service (PaaS)
 
+## 9. Project-1 A multi tier website using AWS EC2
+
+### This project demonstrates the design and deployment of a multi-tier architecture using core AWS services such as EC2, RDS, and Security Groups.It showcases how a web server and a database server operate in separate tiers while communicating securely to deliver a dynamic application.
+
+### Architecture Overview
+
+- The project implements a 2-tier architecture:
+
+### Tier 1 – Web/Application Layer (EC2)
+
+- Launched an EC2 instance running Ubuntu.
+
+- Configured a Security Group allowing incoming traffic (HTTP/HTTPS/SSH).
+
+- Installed:
+- Apache2 (Web server)
+- PHP (Backend logic)
+- MySQL client (To connect to RDS)
+- Replaced the default Apache HTML page with a custom PHP form containing:
+- Name field
+- Email field
+- Submit button
+
+### Tier 2 – Database Layer (Amazon RDS)
+
+- Created an Amazon RDS MySQL instance.
+
+- Configured a separate Security Group allowing traffic only from the EC2 instance.
+
+- Received the RDS Endpoint and used it in the PHP code to connect from EC2.
+
+- Created a MySQL table with fields:
+- name
+- email
+- Verified that form submissions insert data correctly into the RDS table.
+
+## End-to-End Workflow
+
+- User opens the EC2 public IP in the browser.
+
+- The custom HTML/PHP form appears.
+
+- User enters name and email → clicks Submit.
+
+- PHP code connects to the RDS MySQL database using:
+- Hostname (RDS endpoint)
+- Username
+- Password
+
+- The data is successfully inserted into the MySQL table.
+
+- Verified insertion by logging into MySQL from EC2 using:
+
+- `mysql -h <RDS-ENDPOINT> -u <username> -p`
+
+### Key AWS Concepts Demonstrated
+
+- EC2 provisioning & Apache web server setup
+- Security Group design for multi-tier architectures
+- Installation and integration of Apache + PHP + MySQL
+- RDS MySQL instance creation and VPC inter-resource connectivity
+- Dynamic form handling & backend DB connectivity
+- Storing and retrieving data from MySQL in the cloud
+
+### Outcome
+
+- A fully functional multi-tier dynamic website running on AWS where users submit data through a front-end application hosted on EC2, and the data is securely stored in an Amazon RDS MySQL database.
+
 ## 9. Project-2 – Publishing SNS Messages Privately
 
 - Creating SNS topics
@@ -131,7 +199,3 @@
 - Private SNS notifications
 
 - Skills Gained: Notification services, secure messaging
-
-## 10. Project-1 Assignment
-
-A hands-on project combining multiple AWS services.
